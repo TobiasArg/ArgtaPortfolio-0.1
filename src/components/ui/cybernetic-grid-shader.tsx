@@ -1,8 +1,18 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const CyberneticGridShader = () => {
+interface CyberneticGridShaderProps {
+    distortion?: number;
+}
+
+const CyberneticGridShader = ({ distortion = 0 }: CyberneticGridShaderProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const uniformsRef = useRef<{
+        iTime: { value: number };
+        iResolution: { value: THREE.Vector2 };
+        iMouse: { value: THREE.Vector2 };
+        uDistortion: { value: number };
+    } | null>(null);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -29,6 +39,7 @@ const CyberneticGridShader = () => {
       uniform vec2 iResolution;
       uniform float iTime;
       uniform vec2 iMouse;
+      uniform float uDistortion;
 
       float random(vec2 st) {
         return fract(sin(dot(st.xy, vec2(12.9898, 78.233)))
@@ -50,6 +61,13 @@ const CyberneticGridShader = () => {
         // reduce 0.4 to 0.15 to make the distortion radius smaller
         warp *= smoothstep(0.15, 0.0, mouseDist);
         uv += warp;
+
+        // GLOBAL SCROLL WARP (Identical to cursor logic but global)
+        if (uDistortion > 0.01) {
+            // Global wave based on UV position, mimicking the mouse sin ripple
+            float scrollWavy = sin(uv.y * 20.0 - iTime * 10.0) * 0.025 * uDistortion;
+            uv += scrollWavy; 
+        }
 
         // ZOOM control: higher values = more squares (feels farther away)
         float zoom = 3.0;
@@ -86,6 +104,7 @@ const CyberneticGridShader = () => {
         const uniforms = {
             iTime: { value: 0 },
             iResolution: { value: new THREE.Vector2() },
+            uDistortion: { value: distortion },
             iMouse: {
                 value: new THREE.Vector2(
                     (window.innerWidth / 2) * window.devicePixelRatio,
@@ -93,6 +112,7 @@ const CyberneticGridShader = () => {
                 )
             }
         };
+        uniformsRef.current = uniforms;
 
         const material = new THREE.ShaderMaterial({
             vertexShader,
@@ -149,6 +169,13 @@ const CyberneticGridShader = () => {
             renderer.dispose();
         };
     }, []);
+
+    // Update uDistortion uniform when prop changes
+    useEffect(() => {
+        if (uniformsRef.current) {
+            uniformsRef.current.uDistortion.value = distortion;
+        }
+    }, [distortion]);
 
     return (
         <div
