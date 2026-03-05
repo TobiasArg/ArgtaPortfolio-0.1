@@ -56,10 +56,10 @@ const CyberneticGridShader = ({ distortion = 0 }: CyberneticGridShaderProps) => 
         float t         = iTime * 0.2;
         float mouseDist = length(uv - mouse);
 
-        // BASE MATRIX FORM (Permanent Amplitude/Curvature)
+        // BASE MATRIX FORM (Refined Amplitude to prevent ultra-wide distortion)
         float d = length(uv);
-        // This gives it a 'sphere' or 'curved' technical form (Amplitude)
-        uv *= 1.3 - d * 0.4; 
+        // Flatter curvature for better consistency on large monitors
+        uv *= 1.05 - d * 0.15; 
 
         // NAVIGATION (Move between different sectors)
         vec2 navOffset = vec2(0.0, uDistortion * 2.0); 
@@ -67,8 +67,8 @@ const CyberneticGridShader = ({ distortion = 0 }: CyberneticGridShaderProps) => 
 
         // CURSOR DISTORTION (Warp)
         float currentMouseDist = length(scrolledUv - (mouse + navOffset));
-        float warp = sin(currentMouseDist * 20.0 - t * 4.0) * 0.1;
-        warp *= smoothstep(0.15, 0.0, currentMouseDist);
+        float warp = sin(currentMouseDist * 25.0 - t * 4.0) * 0.08;
+        warp *= smoothstep(0.1, 0.0, currentMouseDist);
         scrolledUv += warp;
 
         // ZOOM control
@@ -92,8 +92,8 @@ const CyberneticGridShader = ({ distortion = 0 }: CyberneticGridShaderProps) => 
         color += vec3(1.0, 0.6, 0.1) * energy * line;
 
         // glow around mouse (ORANGE GLOW)
-        float glow = smoothstep(0.1, 0.0, mouseDist);
-        color += vec3(1.0, 0.5, 0.0) * glow * 0.5;
+        float glow = smoothstep(0.08, 0.0, mouseDist);
+        color += vec3(1.0, 0.5, 0.0) * glow * 0.4;
 
         // subtle noise
         color += random(uv + t * 0.1) * 0.05;
