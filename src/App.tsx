@@ -6,7 +6,7 @@ import Lenis from "lenis";
 import { GitHubCalendar } from 'react-github-calendar';
 import {
   Code2, Layers, Cpu, Database, Cloud, Zap, Brain, Terminal, Box,
-  Server, ShieldCheck, Globe, Monitor, Atom, Network, Mail, Github, Linkedin, ExternalLink
+  Server, ShieldCheck, Globe, Monitor, Atom, Network, Mail, Github, Linkedin, ExternalLink, FileDown
 } from "lucide-react";
 
 const ConstructedText = memo(({ text, className, delayOffset = 0 }: { text: string; className?: string; delayOffset?: number }) => {
@@ -638,15 +638,17 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
                   { label: "Mail", icon: Mail, href: "mailto:your-email@example.com", subtext: "direct_uplink" },
                   { label: "GitHub", icon: Github, href: "https://github.com/TobiasArg", subtext: "core_repository" },
-                  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/your-profile", subtext: "neural_network" }
+                  { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/tobias-arangio-a17372203/", subtext: "neural_network" },
+                  { label: "Resume", icon: FileDown, href: "#", subtext: "system_manifesto", download: true }
                 ].map((item, idx) => (
                   <motion.a
                     key={idx}
                     href={item.href}
+                    download={item.download}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
