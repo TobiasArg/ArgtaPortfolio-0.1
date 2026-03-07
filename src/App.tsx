@@ -6,7 +6,7 @@ import Lenis from "lenis";
 import { GitHubCalendar } from 'react-github-calendar';
 import {
   Code2, Layers, Cpu, Database, Cloud, Zap, Brain, Terminal, Box,
-  Server, ShieldCheck, Monitor, Atom, Mail, Github, Linkedin, ExternalLink, FileDown
+  Server, ShieldCheck, Monitor, Atom, Mail, Github, Linkedin, ExternalLink, FileDown, BookOpen
 } from "lucide-react";
 
 const ConstructedText = memo(({ text, className, delayOffset = 0 }: { text: string; className?: string; delayOffset?: number }) => {
@@ -490,6 +490,55 @@ export default function App() {
               />
             </div>
 
+            {/* Currently Building: Clocket */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="relative w-full border border-orange-500/20 bg-orange-500/[0.03] backdrop-blur-md overflow-hidden group"
+            >
+              {/* Top scanline */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
+              {/* Left accent bar */}
+              <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-orange-500/60 via-orange-500/20 to-transparent" />
+
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-8 py-6 pl-10">
+                {/* Left */}
+                <div className="flex items-center space-x-6">
+                  <div className="flex flex-col items-center space-y-1.5">
+                    <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                    <div className="w-[1px] h-8 bg-gradient-to-b from-orange-500/40 to-transparent" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[8px] font-mono tracking-[0.5em] uppercase text-orange-500/60">
+                      Currently Building
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-light tracking-[0.3em] uppercase text-white">
+                      Clocket
+                    </h3>
+                    <p className="text-white/40 text-[11px] leading-relaxed tracking-widest font-extralight max-w-xl">
+                      A personal finance app — simple, fast, and built for everyone. Track spending, understand your habits, and improve your financial day by day in a comfortable and practical environment.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: tags */}
+                <div className="flex flex-col items-start md:items-end space-y-2 shrink-0">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+                    <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-orange-400">In Progress</span>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Corner accents */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-orange-500/30" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-orange-500/10" />
+            </motion.div>
+
+
             <motion.div
               variants={sectionVariants}
               initial="hidden"
@@ -560,6 +609,82 @@ export default function App() {
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Blog Access Node */}
+            {(() => {
+              const blogUrl = import.meta.env.VITE_BLOG_URL;
+              const isLive = Boolean(blogUrl);
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                  className="mt-8"
+                >
+                  <a
+                    href={isLive ? blogUrl : undefined}
+                    target={isLive ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    aria-label="Access Argta Blog"
+                    className={`group relative flex items-center justify-between w-full p-8 border backdrop-blur-md transition-all duration-500 overflow-hidden ${isLive
+                      ? "border-orange-500/20 bg-orange-500/[0.03] hover:border-orange-500/60 hover:bg-orange-500/[0.07] cursor-pointer"
+                      : "border-white/5 bg-white/[0.01] cursor-default"
+                      }`}
+                  >
+                    {/* Scanline top */}
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent group-hover:via-orange-500/60 transition-all" />
+
+                    {/* Left: icon + label */}
+                    <div className="flex items-center space-x-6">
+                      <div className={`p-3 border transition-all duration-500 ${isLive
+                        ? "border-orange-500/30 bg-orange-500/10 group-hover:bg-orange-500/20"
+                        : "border-white/5 bg-white/[0.02]"
+                        }`}>
+                        <BookOpen className={`w-5 h-5 transition-colors ${isLive ? "text-orange-400" : "text-white/20"
+                          }`} />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[9px] font-mono tracking-[0.4em] uppercase text-orange-500/60">
+                          MODULE::BLOG_STREAM
+                        </p>
+                        <h4 className={`text-lg font-light tracking-[0.25em] uppercase transition-colors ${isLive ? "text-white group-hover:text-orange-400" : "text-white/30"
+                          }`}>
+                          My Blog
+                        </h4>
+                        <p className="text-white/30 text-[10px] tracking-widest font-extralight">
+                          More about my mind — thoughts, ideas & what I'm building
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right: status + arrow */}
+                    <div className="flex items-center space-x-4">
+                      <div className="text-right space-y-1">
+                        <div className={`flex items-center space-x-2 justify-end ${isLive ? "text-orange-400" : "text-white/20"
+                          }`}>
+                          <div className={`w-1.5 h-1.5 rounded-full ${isLive ? "bg-orange-400 animate-pulse" : "bg-white/20"
+                            }`} />
+                          <span className="text-[8px] font-mono uppercase tracking-[0.4em]">
+                            {isLive ? "Live" : "Coming Soon"}
+                          </span>
+                        </div>
+                        <span className="block text-[7px] font-mono text-white/10 uppercase tracking-widest">
+                          {isLive ? "Access granted" : "Signal pending"}
+                        </span>
+                      </div>
+                      {isLive && (
+                        <ExternalLink className="w-4 h-4 text-orange-500/40 group-hover:text-orange-400 transition-colors" />
+                      )}
+                    </div>
+
+                    {/* Corner accents */}
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/10 group-hover:border-orange-500/40 transition-colors" />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/10 group-hover:border-orange-500/40 transition-colors" />
+                  </a>
+                </motion.div>
+              );
+            })()}
           </div>
         </section>
 
