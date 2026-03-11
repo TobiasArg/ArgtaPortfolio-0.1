@@ -111,7 +111,6 @@ const TechCard = memo(({ label, level, icon: Icon, delay }: { label: string; lev
         </div>
         <div className="flex flex-col">
           <span className="text-[11px] tracking-[0.3em] uppercase text-white font-light group-hover:text-orange-400 transition-colors">{label}</span>
-          <span className="text-[7px] font-mono text-white/20 uppercase tracking-tighter">Protocol // Active</span>
         </div>
       </div>
       <div className="text-[10px] font-mono text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
@@ -554,34 +553,24 @@ export default function App() {
             >
               {[
                 {
-                  label: "MODULE::FRONTEND",
                   title: "Core Frontend",
-                  desc: "Crafting sophisticated reactive interfaces with React and TypeScript. Specializing in high-fidelity UX, complex state management, and pixel-perfect implementation of technical designs. Expertise in performance optimization, accessible UI components, and seamless integration with real-time data streams.",
-                  tag: "INTERFACE_LOGIC"
+                  desc: "Crafting sophisticated reactive interfaces with React and TypeScript. Specializing in high-fidelity UX, complex state management, and pixel-perfect implementation of technical designs. Expertise in performance optimization, accessible UI components, and seamless integration with real-time data streams."
                 },
                 {
-                  label: "MODULE::BACKEND",
                   title: "Core Backend",
-                  desc: "Building robust server-side backbones with Node.js and TypeScript. Specialized in clean REST API architecture, database optimization (PostgreSQL), and secure data orchestration. Focused on scalable microservices, middleware logic, and high-security authentication protocols.",
-                  tag: "SERVER_BACKBONE"
+                  desc: "Building robust server-side backbones with Node.js and TypeScript. Specialized in clean REST API architecture, database optimization (PostgreSQL), and secure data orchestration. Focused on scalable microservices, middleware logic, and high-security authentication protocols."
                 },
                 {
-                  label: "MODULE::CLOUD_INFRA",
                   title: "Infra & Deployment",
-                  desc: "Scaling production environments via Vercel and Neon. Implementing automated CI/CD pipelines and serverless practices for maximum reliability.",
-                  tag: "HIGH_AVAILABILITY"
+                  desc: "Scaling production environments via Vercel and Neon. Implementing automated CI/CD pipelines and serverless practices for maximum reliability."
                 },
                 {
-                  label: "MODULE::NEURAL_OPS",
                   title: "LLMs and Agents",
-                  desc: "Advanced integration of Large Language Models and MCPs. Specializing in autonomous agent environments and efficiency automation.",
-                  tag: "NEURAL_SYNC"
+                  desc: "Advanced integration of Large Language Models and MCPs. Specializing in autonomous agent environments and efficiency automation."
                 },
                 {
-                  label: "MODULE::SYSTEMS_ENGINE",
                   title: "Low-level systems",
-                  desc: "Systems orchestration using C/C++. Technical understanding of concurrency and high-performance process execution at the machine level.",
-                  tag: "NATIVE_LOGIC"
+                  desc: "Systems orchestration using C/C++. Technical understanding of concurrency and high-performance process execution at the machine level."
                 }
               ].map((module, i) => (
                 <motion.div
@@ -593,21 +582,11 @@ export default function App() {
                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent group-hover:via-orange-500/60 transition-all" />
 
                   <div className="space-y-6">
-                    <div className="flex justify-between items-start">
-                      <span className="text-orange-500 font-mono text-[9px] tracking-[0.3em] uppercase">{module.label}</span>
-                      <span className="text-white/20 font-mono text-[8px] tracking-widest uppercase">{module.tag}</span>
-                    </div>
-
                     <h4 className="text-white text-xl font-light tracking-widest uppercase group-hover:text-orange-400 transition-colors">{module.title}</h4>
 
                     <p className="text-white/40 text-[11px] leading-relaxed tracking-widest font-extralight border-l border-white/10 pl-4 group-hover:border-orange-500/30 transition-colors">
                       {module.desc}
                     </p>
-
-                    <div className="pt-4 flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500/40 group-hover:animate-pulse" />
-                      <span className="text-[7px] font-mono text-white/20 uppercase tracking-[0.4em]">Protocol // Verified</span>
-                    </div>
                   </div>
 
                   {/* Corner Accent */}
@@ -717,22 +696,19 @@ export default function App() {
                   version: "VER 3.0",
                   date: "2025 // PRESENT",
                   title: "FULLSTACK DEVELOPER",
-                  desc: "Developing scalable end-to-end applications using the modern React/Node.js ecosystem. Implementing advanced UI patterns and integrating AI-driven features to enhance user experience.",
-                  tag: "ACTIVE_SYSTEM"
+                  desc: "Developing scalable end-to-end applications using the modern React/Node.js ecosystem. Implementing advanced UI patterns and integrating AI-driven features to enhance user experience."
                 },
                 {
                   version: "VER 2.0",
                   date: "2023 // 2025",
                   title: "TECH INFRASTRUCTURE",
-                  desc: "Managing server environments and CI/CD pipelines. Focused on system reliability, automation, and optimizing network protocols for high-availability digital infrastructures.",
-                  tag: "STABLE_DEPLOY"
+                  desc: "Managing server environments and CI/CD pipelines. Focused on system reliability, automation, and optimizing network protocols for high-availability digital infrastructures."
                 },
                 {
                   version: "VER 1.0",
                   date: "2021 // 2023",
                   title: "IT SUPPORT SPECIALIST",
-                  desc: "Providing comprehensive technical support and hardware troubleshooting. Managing network configurations and ensuring system security for organizational operations.",
-                  tag: "LEGACY_CORE"
+                  desc: "Providing comprehensive technical support and hardware troubleshooting. Managing network configurations and ensuring system security for organizational operations."
                 }
               ].map((node, i) => (
                 <motion.div
@@ -754,8 +730,7 @@ export default function App() {
                       <div className="absolute top-0 left-0 w-8 h-[1px] bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
 
                       <div className="space-y-4">
-                        <div className="flex justify-between items-start">
-                          <span className="text-orange-500/60 font-mono text-[8px] tracking-[0.3em] uppercase">{node.tag}</span>
+                        <div className="flex justify-end items-start">
                           <span className="text-white/20 font-mono text-[8px] tracking-widest">{node.version}</span>
                         </div>
 
