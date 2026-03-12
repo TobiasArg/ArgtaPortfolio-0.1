@@ -300,6 +300,68 @@ export default function App() {
           </motion.div>
         </section>
 
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-20 sm:py-24">
+          <div className="max-w-6xl w-full text-center space-y-16">
+            <div className="space-y-4">
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 06 // Terminal Uplink</span>
+              <ConstructedText text="INITIATE COMMUNICATION" className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative p-5 sm:p-8 md:p-12 bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-sm group overflow-hidden"
+            >
+              {/* Background Accent Glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-500/5 blur-[100px] rounded-full group-hover:bg-orange-500/10 transition-colors duration-700" />
+              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-orange-500/5 blur-[100px] rounded-full group-hover:bg-orange-500/10 transition-colors duration-700" />
+
+              <div className="relative z-10 space-y-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-7">
+                  {[
+                    { label: "Mail", icon: Mail, href: "mailto:your-email@example.com" },
+                    { label: "GitHub", icon: Github, href: "https://github.com/TobiasArg" },
+                    { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/tobias-arangio-a17372203/" },
+                    { label: "Resume", icon: FileDown, href: "#", download: true }
+                  ].map((item, idx) => (
+                    <motion.a
+                      key={idx}
+                      href={item.href}
+                      download={item.download}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Connect via ${item.label}`}
+                      whileHover={{ scale: 0.99 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group/btn relative min-h-[176px] sm:min-h-[216px] p-6 sm:p-10 border border-orange-500/30 bg-orange-500/[0.08] shadow-[0_0_26px_rgba(249,115,22,0.18),inset_0_0_26px_rgba(249,115,22,0.06)] hover:border-white/15 hover:bg-black/35 hover:shadow-[0_0_0_rgba(0,0,0,0)] transition-all duration-500 flex flex-col items-center justify-center space-y-4 sm:space-y-5"
+                    >
+                      <div className="p-3 sm:p-4 bg-orange-500/20 border border-orange-500/35 rounded-none group-hover/btn:border-white/10 group-hover/btn:bg-white/5 transition-all duration-500">
+                        <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-orange-300 group-hover/btn:text-white/40 transition-colors" />
+                      </div>
+                      <div className="text-center">
+                        <span className="block text-white text-[12px] sm:text-[13px] tracking-[0.2em] sm:tracking-[0.4em] uppercase font-light group-hover/btn:text-white/70 transition-colors">{item.label}</span>
+                      </div>
+                      <ExternalLink className="absolute top-4 right-4 w-3 h-3 text-orange-400/50 group-hover/btn:text-white/20 transition-colors" />
+                    </motion.a>
+                  ))}
+                </div>
+
+                <div className="pt-8 border-t border-white/5">
+                  <p className="text-[9px] font-mono text-white/20 tracking-[0.25em] sm:tracking-[0.5em] uppercase">
+                    (C) 2026 Argta // Cryptographic handshake active
+                  </p>
+                </div>
+              </div>
+
+              {/* Corner Accents */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20 group-hover:border-orange-500/80 transition-colors duration-500" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/20 group-hover:border-orange-500/80 transition-colors duration-500" />
+            </motion.div>
+          </div>
+        </section>
+
         {/* 02 // REPOSITORY DASHBOARD */}
         <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start px-4 sm:px-6 md:px-8 py-20 sm:py-24">
           <div className="max-w-6xl w-full flex flex-col items-center space-y-8 sm:space-y-12">
@@ -756,68 +818,6 @@ export default function App() {
         </section>
 
         {/* 06 // UPLINK (Contact) */}
-        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-20 sm:py-24">
-          <div className="max-w-6xl w-full text-center space-y-16">
-            <div className="space-y-4">
-              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 06 // Terminal Uplink</span>
-              <ConstructedText text="INITIATE COMMUNICATION" className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative p-5 sm:p-8 md:p-12 bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-sm group overflow-hidden"
-            >
-              {/* Background Accent Glow */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-500/5 blur-[100px] rounded-full group-hover:bg-orange-500/10 transition-colors duration-700" />
-              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-orange-500/5 blur-[100px] rounded-full group-hover:bg-orange-500/10 transition-colors duration-700" />
-
-              <div className="relative z-10 space-y-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-7">
-                  {[
-                    { label: "Mail", icon: Mail, href: "mailto:your-email@example.com", subtext: "direct_uplink" },
-                    { label: "GitHub", icon: Github, href: "https://github.com/TobiasArg", subtext: "core_repository" },
-                    { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/tobias-arangio-a17372203/", subtext: "neural_network" },
-                    { label: "Resume", icon: FileDown, href: "#", subtext: "system_manifesto", download: true }
-                  ].map((item, idx) => (
-                    <motion.a
-                      key={idx}
-                      href={item.href}
-                      download={item.download}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Connect via ${item.label}`}
-                      whileHover={{ scale: 0.99 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group/btn relative min-h-[176px] sm:min-h-[216px] p-6 sm:p-10 border border-orange-500/30 bg-orange-500/[0.08] shadow-[0_0_26px_rgba(249,115,22,0.18),inset_0_0_26px_rgba(249,115,22,0.06)] hover:border-white/15 hover:bg-black/35 hover:shadow-[0_0_0_rgba(0,0,0,0)] transition-all duration-500 flex flex-col items-center justify-center space-y-4 sm:space-y-5"
-                    >
-                      <div className="p-3 sm:p-4 bg-orange-500/20 border border-orange-500/35 rounded-none group-hover/btn:border-white/10 group-hover/btn:bg-white/5 transition-all duration-500">
-                        <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-orange-300 group-hover/btn:text-white/40 transition-colors" />
-                      </div>
-                      <div className="text-center space-y-1">
-                        <span className="block text-white text-[12px] sm:text-[13px] tracking-[0.2em] sm:tracking-[0.4em] uppercase font-light group-hover/btn:text-white/70 transition-colors">{item.label}</span>
-                        <span className="block text-orange-300/70 text-[8px] font-mono uppercase tracking-widest group-hover/btn:text-white/25 transition-colors">{item.subtext}</span>
-                      </div>
-                      <ExternalLink className="absolute top-4 right-4 w-3 h-3 text-orange-400/50 group-hover/btn:text-white/20 transition-colors" />
-                    </motion.a>
-                  ))}
-                </div>
-
-                <div className="pt-8 border-t border-white/5">
-                  <p className="text-[9px] font-mono text-white/20 tracking-[0.25em] sm:tracking-[0.5em] uppercase">
-                    (C) 2026 Argta // Cryptographic handshake active
-                  </p>
-                </div>
-              </div>
-
-              {/* Corner Accents */}
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20 group-hover:border-orange-500/80 transition-colors duration-500" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/20 group-hover:border-orange-500/80 transition-colors duration-500" />
-            </motion.div>
-          </div>
-        </section>
       </main>
 
       <footer className="relative z-10 w-full section-footer">
