@@ -102,25 +102,23 @@ const lineVariants = {
 const TechCard = memo(({ label, level, icon: Icon, delay }: { label: string; level: number; icon: any; delay: number }) => (
   <motion.div
     variants={cardVariants}
-    className="group relative p-5 md:p-6 bg-[#0a0a0a] border border-white/10 flex flex-col justify-between h-40 md:h-44 transform-gpu isolate overflow-hidden"
+    className="group relative p-4 sm:p-5 md:p-6 bg-[#0a0a0a] border border-white/10 flex flex-col justify-between h-40 md:h-44 transform-gpu isolate overflow-hidden"
   >
-    <div className="flex items-start justify-between w-full">
-      <div className="flex items-center space-x-3 min-w-0 pr-2">
-        <div className="p-3 md:p-3.5 bg-white/5 border border-white/5 rounded-lg group-hover:bg-orange-500/10 group-hover:border-orange-500/20 transition-all duration-500">
+    <div className="relative w-full min-h-[74px] flex items-center justify-center">
+      <div className="absolute top-0 right-0 shrink-0 text-[10px] font-mono text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
+        0{Math.floor(delay * 10)}
+      </div>
+      <div className="flex flex-col items-center justify-center gap-2 text-center min-w-0 px-6">
+        <div className="p-2.5 sm:p-3 md:p-3.5 bg-white/5 border border-white/5 rounded-lg group-hover:bg-orange-500/10 group-hover:border-orange-500/20 transition-all duration-500">
           <Icon className="w-6 h-6 md:w-7 md:h-7 text-white/40 group-hover:text-orange-500 transition-colors" />
         </div>
-        <div className="flex flex-col min-w-0">
-          <span className="text-[13px] md:text-[15px] leading-tight tracking-[0.18em] uppercase text-white font-light group-hover:text-orange-400 transition-colors break-words">
-            {label}
-          </span>
-        </div>
-      </div>
-      <div className="shrink-0 text-[10px] font-mono text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
-        0{Math.floor(delay * 10)}
+        <span className="text-[12px] sm:text-[13px] md:text-[15px] leading-tight tracking-[0.12em] sm:tracking-[0.18em] uppercase text-white font-light group-hover:text-orange-400 transition-colors break-words">
+          {label}
+        </span>
       </div>
     </div>
 
-    <div className="w-full space-y-3">
+    <div className="w-full space-y-2 sm:space-y-3">
       <div className="h-[1px] w-full bg-white/5 overflow-hidden relative">
         <motion.div
           variants={lineVariants}
@@ -128,7 +126,7 @@ const TechCard = memo(({ label, level, icon: Icon, delay }: { label: string; lev
           className="h-full w-full bg-gradient-to-r from-transparent via-orange-500 to-orange-400"
         />
       </div>
-      <div className="flex justify-between items-center text-[7px] tracking-[0.3em] uppercase text-white/20 font-mono">
+      <div className="flex justify-between items-center text-[7px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-white/20 font-mono">
         <span>Capacity</span>
         <span className="text-orange-500/40">{level}%</span>
       </div>
@@ -142,18 +140,18 @@ const TechCard = memo(({ label, level, icon: Icon, delay }: { label: string; lev
 
 const GithubDashboard = memo(({ stats }: { stats: any }) => {
   return (
-    <div className="w-full max-w-6xl flex flex-col items-center space-y-12">
+    <div className="w-full max-w-6xl flex flex-col items-center space-y-8 sm:space-y-12">
       {/* Calendar Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full p-8 bg-black/40 border border-orange-500/10 backdrop-blur-sm relative overflow-hidden group transform-gpu"
+        className="w-full p-4 sm:p-6 md:p-8 bg-black/40 border border-orange-500/10 backdrop-blur-sm relative overflow-hidden group transform-gpu"
       >
         <div className="absolute top-0 left-0 w-1 h-full bg-orange-500/20 group-hover:bg-orange-500/40 transition-colors" />
-        <div className="flex flex-col space-y-6">
-          <div className="flex justify-between items-center text-[10px] tracking-[0.4em] uppercase text-white/40">
+        <div className="flex flex-col space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-white/40">
             <span>Contribution Matrix // TobiasArg</span>
             <span className="animate-pulse text-orange-500/60">Live Feed Established</span>
           </div>
@@ -179,16 +177,16 @@ const GithubDashboard = memo(({ stats }: { stats: any }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="p-8 bg-white/[0.02] border border-white/5 backdrop-blur-sm relative group overflow-hidden max-w-xs w-full transform-gpu"
+          className="p-5 sm:p-7 md:p-8 bg-white/[0.02] border border-white/5 backdrop-blur-sm relative group overflow-hidden max-w-xs w-full transform-gpu"
         >
           <div className="absolute top-0 right-0 p-2 text-[8px] font-mono text-orange-500/20 group-hover:text-orange-500/40 transition-colors">
             AR
           </div>
           <div className="flex flex-col items-center space-y-1">
-            <span className="text-5xl font-light font-mono text-white group-hover:text-orange-400 transition-colors">
+            <span className="text-4xl sm:text-5xl font-light font-mono text-white group-hover:text-orange-400 transition-colors">
               {stats.repos === "0" ? "N/A" : stats.repos}
             </span>
-            <span className="text-[10px] tracking-[0.4em] uppercase text-white/40">Active Repositories</span>
+            <span className="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-white/40 text-center">Active Repositories</span>
           </div>
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
         </motion.div>
@@ -280,36 +278,36 @@ export default function App() {
         <CyberneticGridShader />
 
         {/* 01 // HERO */}
-        <section className="relative z-10 h-screen flex flex-col items-center justify-center snap-start pointer-events-none">
-          <div className="flex flex-col items-center justify-center space-y-0 w-full max-w-8xl px-4 md:px-8">
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start pointer-events-none px-2 sm:px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-0 w-full max-w-[90rem]">
             <div className="hidden md:block w-full">
-              <PathAnimation text="TOBIAS ARANGIO" fontSize={48} duration="10s" className="w-full" />
+              <PathAnimation text="TOBIAS ARANGIO" fontSize={118} duration="8s" className="w-full" />
             </div>
-            <div className="md:hidden w-full flex flex-col">
-              <PathAnimation text="TOBIAS" fontSize={48} duration="6s" className="w-full" />
-              <PathAnimation text="ARANGIO" fontSize={48} duration="6s" className="w-full -mt-8" />
+            <div className="md:hidden w-full max-w-[26rem] flex flex-col items-center gap-2">
+              <PathAnimation text="TOBIAS" fontSize={58} duration="6s" className="w-full" />
+              <PathAnimation text="ARANGIO" fontSize={58} duration="6s" className="w-full" />
             </div>
-            <PathAnimation text="FULLSTACK DEVELOPER" fontSize={20} duration="14s" className="w-full -mt-10 md:-mt-16" />
+            <PathAnimation text="FULLSTACK DEVELOPER" fontSize={32} duration="10s" className="w-full max-w-[26rem] mt-1 md:max-w-none md:-mt-16" />
             <h1 className="sr-only">Tobias Arangio - Fullstack Developer Portfolio</h1>
           </div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.3 }}
             transition={{ delay: 6, duration: 3 }}
-            className="absolute bottom-10 animate-pulse text-orange-400 text-sm tracking-widest uppercase font-light"
+            className="absolute bottom-10 animate-pulse text-orange-400 text-xs sm:text-sm tracking-[0.4em] sm:tracking-widest uppercase font-light"
           >
             Analyzing Environment...
           </motion.div>
         </section>
 
         {/* 02 // REPOSITORY DASHBOARD */}
-        <section className="relative z-10 h-screen flex flex-col items-center justify-center snap-start px-8">
-          <div className="max-w-6xl w-full flex flex-col items-center space-y-12">
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start px-4 sm:px-6 md:px-8 py-20 sm:py-24">
+          <div className="max-w-6xl w-full flex flex-col items-center space-y-8 sm:space-y-12">
             <div className="text-center space-y-4">
-              <span className="text-orange-500 text-[10px] tracking-[1em] uppercase">Sector 01 // Repository Data</span>
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 01 // Repository Data</span>
               <ConstructedText
                 text="DEVELOPMENT ACTIVITY"
-                className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase text-white"
+                className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white"
               />
             </div>
 
@@ -318,12 +316,12 @@ export default function App() {
         </section>
 
         {/* 03 // SYSTEMS (Projects) */}
-        <section className="relative z-10 h-screen flex flex-col items-center justify-center snap-start px-8">
-          <div className="max-w-6xl w-full space-y-16">
-            <div className="flex justify-between items-end border-b border-orange-500/20 pb-4">
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start px-4 sm:px-6 md:px-8 py-20 sm:py-24">
+          <div className="max-w-6xl w-full space-y-10 sm:space-y-16">
+            <div className="flex justify-center items-end border-b border-orange-500/20 pb-4">
               <div className="space-y-2">
-                <span className="text-orange-500 text-[10px] tracking-[1em] uppercase">Sector 02 // Project Log</span>
-                <ConstructedText text="ACTIVE SYSTEMS" className="text-3xl md:text-5xl font-light tracking-[0.2em] uppercase text-white" />
+                <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 02 // Project Log</span>
+                <ConstructedText text="ACTIVE SYSTEMS" className="text-3xl sm:text-4xl md:text-5xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
               </div>
             </div>
             <motion.div
@@ -331,7 +329,7 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
             >
               {repos.map((repo) => (
                 <motion.a
@@ -341,14 +339,14 @@ export default function App() {
                   rel="noopener noreferrer"
                   aria-label={`View ${repo.name} project on GitHub`}
                   variants={cardVariants}
-                  className="group relative p-8 border border-white/10 bg-[#0a0a0a] transition-all hover:border-orange-500/40 flex flex-col justify-between transform-gpu isolate"
+                  className="group relative p-5 sm:p-6 md:p-8 border border-white/10 bg-[#0a0a0a] transition-all hover:border-orange-500/40 flex flex-col justify-between transform-gpu isolate"
                 >
                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
                   <div>
-                    <h3 className="text-xl font-light tracking-widest text-white mb-2 uppercase group-hover:text-orange-400 transition-colors truncate">
+                    <h3 className="text-lg sm:text-xl font-light tracking-[0.12em] sm:tracking-widest text-white mb-2 uppercase group-hover:text-orange-400 transition-colors truncate">
                       {repo.name.replace(/-/g, ' ')}
                     </h3>
-                    <p className="text-white/40 text-[11px] leading-relaxed line-clamp-2 mb-6 font-extralight tracking-widest">
+                    <p className="text-white/40 text-[11px] leading-relaxed line-clamp-2 mb-5 sm:mb-6 font-extralight tracking-[0.08em] sm:tracking-widest">
                       {repo.description || "No description provided for this protocol link."}
                     </p>
                   </div>
@@ -371,27 +369,27 @@ export default function App() {
         </section>
 
         {/* 04 // TECH STACK (Skills) */}
-        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start px-8 py-24">
-          <div className="max-w-6xl w-full space-y-20">
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center snap-start px-4 sm:px-6 md:px-8 py-20 sm:py-24">
+          <div className="max-w-6xl w-full space-y-12 sm:space-y-20">
             <div className="text-center space-y-2">
-              <span className="text-orange-500 text-[10px] tracking-[1em] uppercase">Sector 03 // Tech Stack</span>
-              <ConstructedText text="TECH STACK" className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase text-white" />
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 03 // Tech Stack</span>
+              <ConstructedText text="TECH STACK" className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
             </div>
 
-            <div className="space-y-16">
+            <div className="space-y-12 sm:space-y-16">
               {/* Group 1: Frontend */}
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 opacity-40">
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-mono">Frontend</span>
-                  <div className="h-[1px] w-12 bg-white/20" />
+                <div className="flex items-center justify-center gap-3 sm:space-x-4 opacity-40">
+                  <div className="hidden sm:block h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
+                  <span className="text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.3em] uppercase font-mono text-center">Frontend</span>
+                  <div className="hidden sm:block h-[1px] w-12 bg-white/20" />
                 </div>
                 <motion.div
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4"
                 >
                   <TechCard label="HTML" level={99} icon={Monitor} delay={0.1} />
                   <TechCard label="CSS" level={94} icon={Layers} delay={0.2} />
@@ -403,17 +401,17 @@ export default function App() {
 
               {/* Group 2: Backend & Languages */}
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 opacity-40">
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-mono">Backend & Languages</span>
-                  <div className="h-[1px] w-12 bg-white/20" />
+                <div className="flex items-center justify-center gap-3 sm:space-x-4 opacity-40">
+                  <div className="hidden sm:block h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
+                  <span className="text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.3em] uppercase font-mono text-center">Backend & Languages</span>
+                  <div className="hidden sm:block h-[1px] w-12 bg-white/20" />
                 </div>
                 <motion.div
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-2 md:grid-cols-3 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
                 >
                   <TechCard label="Node.js" level={94} icon={Server} delay={0.1} />
                   <TechCard label="C" level={85} icon={Cpu} delay={0.2} />
@@ -423,17 +421,17 @@ export default function App() {
 
               {/* Group 3: Databases */}
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 opacity-40">
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-mono">Databases</span>
-                  <div className="h-[1px] w-12 bg-white/20" />
+                <div className="flex items-center justify-center gap-3 sm:space-x-4 opacity-40">
+                  <div className="hidden sm:block h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
+                  <span className="text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.3em] uppercase font-mono text-center">Databases</span>
+                  <div className="hidden sm:block h-[1px] w-12 bg-white/20" />
                 </div>
                 <motion.div
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
                 >
                   <TechCard label="SQL" level={92} icon={Database} delay={0.1} />
                   <TechCard label="PostgreSQL" level={90} icon={Database} delay={0.2} />
@@ -444,17 +442,17 @@ export default function App() {
 
               {/* Group 4: Infrastructure & DevOps */}
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 opacity-40">
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-mono">Infrastructure & DevOps</span>
-                  <div className="h-[1px] w-12 bg-white/20" />
+                <div className="flex items-center justify-center gap-3 sm:space-x-4 opacity-40">
+                  <div className="hidden sm:block h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
+                  <span className="text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.3em] uppercase font-mono text-center">Infrastructure & DevOps</span>
+                  <div className="hidden sm:block h-[1px] w-12 bg-white/20" />
                 </div>
                 <motion.div
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4"
                 >
                   <TechCard label="Docker" level={84} icon={Box} delay={0.1} />
                   <TechCard label="Linux" level={89} icon={Terminal} delay={0.2} />
@@ -466,17 +464,17 @@ export default function App() {
 
               {/* Group 5: AI & Tooling */}
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 opacity-40">
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-mono">AI & Tooling</span>
-                  <div className="h-[1px] w-12 bg-white/20" />
+                <div className="flex items-center justify-center gap-3 sm:space-x-4 opacity-40">
+                  <div className="hidden sm:block h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/20" />
+                  <span className="text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.3em] uppercase font-mono text-center">AI & Tooling</span>
+                  <div className="hidden sm:block h-[1px] w-12 bg-white/20" />
                 </div>
                 <motion.div
                   variants={sectionVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-2 md:grid-cols-3 gap-4"
+                  className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
                 >
                   <TechCard label="LLMs / Agents" level={95} icon={Brain} delay={0.1} />
                   <TechCard label="CLI" level={91} icon={Terminal} delay={0.2} />
@@ -487,13 +485,13 @@ export default function App() {
           </div>
         </section>
 
-        <section className="relative z-10 py-32 px-8 flex flex-col items-center">
+        <section className="relative z-10 py-20 sm:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center">
           <div className="max-w-6xl w-full space-y-20">
             <div className="text-center space-y-4">
-              <span className="text-orange-500 text-[10px] tracking-[1em] uppercase animate-pulse">Sector 04 // Architecture</span>
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase animate-pulse">Sector 04 // Architecture</span>
               <ConstructedText
                 text="VISION & MISSION"
-                className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase text-white"
+                className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white"
               />
             </div>
 
@@ -510,21 +508,21 @@ export default function App() {
               {/* Left accent bar */}
               <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-orange-500/60 via-orange-500/20 to-transparent" />
 
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-8 py-6 pl-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-5 sm:px-8 py-6 sm:pl-10">
                 {/* Left */}
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-4 sm:space-x-6">
                   <div className="flex flex-col items-center space-y-1.5">
                     <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
                     <div className="w-[1px] h-8 bg-gradient-to-b from-orange-500/40 to-transparent" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-[8px] font-mono tracking-[0.5em] uppercase text-orange-500/60">
+                    <p className="text-[8px] font-mono tracking-[0.3em] sm:tracking-[0.5em] uppercase text-orange-500/60">
                       Currently Building
                     </p>
-                    <h3 className="text-2xl md:text-3xl font-light tracking-[0.3em] uppercase text-white">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-light tracking-[0.16em] sm:tracking-[0.3em] uppercase text-white">
                       Clocket
                     </h3>
-                    <p className="text-white/40 text-[11px] leading-relaxed tracking-widest font-extralight max-w-xl">
+                    <p className="text-white/40 text-[11px] leading-relaxed tracking-[0.08em] sm:tracking-widest font-extralight max-w-xl">
                       A personal finance app — simple, fast, and built for everyone. Track spending, understand your habits, and improve your financial day by day in a comfortable and practical environment.
                     </p>
                   </div>
@@ -534,7 +532,7 @@ export default function App() {
                 <div className="flex flex-col items-start md:items-end space-y-2 shrink-0">
                   <div className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-                    <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-orange-400">In Progress</span>
+                    <span className="text-[9px] font-mono uppercase tracking-[0.25em] sm:tracking-[0.4em] text-orange-400">In Progress</span>
                   </div>
 
                 </div>
@@ -551,7 +549,7 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
-              className="grid grid-cols-1 md:grid-cols-6 gap-8"
+              className="grid grid-cols-1 md:grid-cols-6 gap-5 sm:gap-8"
             >
               {[
                 {
@@ -578,15 +576,15 @@ export default function App() {
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className={`relative p-8 bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-sm hover:border-orange-500/40 transition-all duration-500 group overflow-hidden ${i < 2 ? 'md:col-span-3' : 'md:col-span-2'}`}
+                  className={`relative p-5 sm:p-7 md:p-8 bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-sm hover:border-orange-500/40 transition-all duration-500 group overflow-hidden ${i < 2 ? 'md:col-span-3' : 'md:col-span-2'}`}
                 >
                   {/* Horizontal Scanline Effect */}
                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent group-hover:via-orange-500/60 transition-all" />
 
                   <div className="space-y-6">
-                    <h4 className="text-white text-xl font-light tracking-widest uppercase group-hover:text-orange-400 transition-colors">{module.title}</h4>
+                    <h4 className="text-white text-lg sm:text-xl font-light tracking-[0.12em] sm:tracking-widest uppercase group-hover:text-orange-400 transition-colors">{module.title}</h4>
 
-                    <p className="text-white/40 text-[11px] leading-relaxed tracking-widest font-extralight border-l border-white/10 pl-4 group-hover:border-orange-500/30 transition-colors">
+                    <p className="text-white/40 text-[11px] leading-relaxed tracking-[0.08em] sm:tracking-widest font-extralight border-l border-white/10 pl-3 sm:pl-4 group-hover:border-orange-500/30 transition-colors">
                       {module.desc}
                     </p>
                   </div>
@@ -614,7 +612,7 @@ export default function App() {
                     target={isLive ? "_blank" : undefined}
                     rel="noopener noreferrer"
                     aria-label="Access Argta Blog"
-                    className={`group relative flex items-center justify-between w-full p-8 border backdrop-blur-md transition-all duration-500 overflow-hidden ${isLive
+                    className={`group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 w-full p-5 sm:p-8 border backdrop-blur-md transition-all duration-500 overflow-hidden ${isLive
                       ? "border-orange-500/20 bg-orange-500/[0.03] hover:border-orange-500/60 hover:bg-orange-500/[0.07] cursor-pointer"
                       : "border-white/5 bg-white/[0.01] cursor-default"
                       }`}
@@ -623,7 +621,7 @@ export default function App() {
                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent group-hover:via-orange-500/60 transition-all" />
 
                     {/* Left: icon + label */}
-                    <div className="flex items-center space-x-6">
+                    <div className="flex items-center space-x-4 sm:space-x-6">
                       <div className={`p-3 border transition-all duration-500 ${isLive
                         ? "border-orange-500/30 bg-orange-500/10 group-hover:bg-orange-500/20"
                         : "border-white/5 bg-white/[0.02]"
@@ -632,27 +630,27 @@ export default function App() {
                           }`} />
                       </div>
                       <div className="space-y-1">
-                        <p className="text-[9px] font-mono tracking-[0.4em] uppercase text-orange-500/60">
+                        <p className="text-[9px] font-mono tracking-[0.2em] sm:tracking-[0.4em] uppercase text-orange-500/60">
                           MODULE::BLOG_STREAM
                         </p>
-                        <h4 className={`text-lg font-light tracking-[0.25em] uppercase transition-colors ${isLive ? "text-white group-hover:text-orange-400" : "text-white/30"
+                        <h4 className={`text-lg font-light tracking-[0.14em] sm:tracking-[0.25em] uppercase transition-colors ${isLive ? "text-white group-hover:text-orange-400" : "text-white/30"
                           }`}>
                           My Blog
                         </h4>
-                        <p className="text-white/30 text-[10px] tracking-widest font-extralight">
+                        <p className="text-white/30 text-[10px] tracking-[0.08em] sm:tracking-widest font-extralight">
                           More about my mind — thoughts, ideas & what I'm building
                         </p>
                       </div>
                     </div>
 
                     {/* Right: status + arrow */}
-                    <div className="flex items-center space-x-4">
-                      <div className="text-right space-y-1">
+                    <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-4">
+                      <div className="text-left sm:text-right space-y-1">
                         <div className={`flex items-center space-x-2 justify-end ${isLive ? "text-orange-400" : "text-white/20"
                           }`}>
                           <div className={`w-1.5 h-1.5 rounded-full ${isLive ? "bg-orange-400 animate-pulse" : "bg-white/20"
                             }`} />
-                          <span className="text-[8px] font-mono uppercase tracking-[0.4em]">
+                          <span className="text-[8px] font-mono uppercase tracking-[0.25em] sm:tracking-[0.4em]">
                             {isLive ? "Live" : "Coming Soon"}
                           </span>
                         </div>
@@ -676,14 +674,14 @@ export default function App() {
         </section>
 
         {/* 05 // NEURAL NODES (Timeline) */}
-        <section className="relative z-10 py-32 px-8 flex flex-col items-center overflow-hidden">
+        <section className="relative z-10 py-20 sm:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center overflow-hidden">
           <div className="max-w-7xl w-full space-y-24 relative">
             {/* Vertical Timeline Line - Enhanced */}
             <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-orange-500/40 to-transparent -translate-x-1/2 shadow-[0_0_15px_rgba(249,115,22,0.2)]" />
 
             <div className="text-center space-y-4 mb-20">
-              <span className="text-orange-500 text-[10px] tracking-[1em] uppercase">Sector 05 // Professional Log</span>
-              <ConstructedText text="PROFESSIONAL CHRONOLOGY" className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase text-white" />
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 05 // Professional Log</span>
+              <ConstructedText text="PROFESSIONAL CHRONOLOGY" className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
             </div>
 
             <motion.div
@@ -727,7 +725,7 @@ export default function App() {
                   </div>
 
                   <div className={`w-full md:w-[45%] ${i % 2 === 0 ? 'md:mr-auto pl-16 md:pl-0' : 'md:ml-auto pl-16 md:pl-0'}`}>
-                    <div className="relative p-8 bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-sm hover:border-orange-500/40 transition-all duration-500 group-hover:bg-orange-500/[0.03]">
+                    <div className="relative p-5 sm:p-8 bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-sm hover:border-orange-500/40 transition-all duration-500 group-hover:bg-orange-500/[0.03]">
                       {/* Top Accent */}
                       <div className="absolute top-0 left-0 w-8 h-[1px] bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
 
@@ -742,10 +740,10 @@ export default function App() {
                               {node.date}
                             </span>
                           </div>
-                          <h4 className="text-white text-xl md:text-2xl font-light tracking-[0.2em] uppercase pt-4">{node.title}</h4>
+                          <h4 className="text-white text-lg sm:text-xl md:text-2xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase pt-4">{node.title}</h4>
                         </div>
 
-                        <p className="text-white/50 text-[11px] leading-relaxed tracking-[0.1em] font-extralight border-l border-white/10 pl-4 ml-1">
+                        <p className="text-white/50 text-[11px] leading-relaxed tracking-[0.08em] sm:tracking-[0.1em] font-extralight border-l border-white/10 pl-3 sm:pl-4 ml-1">
                           {node.desc}
                         </p>
                       </div>
@@ -758,11 +756,11 @@ export default function App() {
         </section>
 
         {/* 06 // UPLINK (Contact) */}
-        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-8 py-24">
+        <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-20 sm:py-24">
           <div className="max-w-6xl w-full text-center space-y-16">
             <div className="space-y-4">
-              <span className="text-orange-500 text-[10px] tracking-[1em] uppercase">Sector 06 // Terminal Uplink</span>
-              <ConstructedText text="INITIATE COMMUNICATION" className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase text-white" />
+              <span className="text-orange-500 text-[10px] tracking-[0.45em] sm:tracking-[1em] uppercase">Sector 06 // Terminal Uplink</span>
+              <ConstructedText text="INITIATE COMMUNICATION" className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white" />
             </div>
 
             <motion.div
@@ -770,7 +768,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative p-12 bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-sm group overflow-hidden"
+              className="relative p-5 sm:p-8 md:p-12 bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-sm group overflow-hidden"
             >
               {/* Background Accent Glow */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-500/5 blur-[100px] rounded-full group-hover:bg-orange-500/10 transition-colors duration-700" />
@@ -778,13 +776,13 @@ export default function App() {
 
               <div className="relative z-10 space-y-10">
                 <div className="space-y-4">
-                  <p className="text-white/40 text-[13px] tracking-[0.3em] leading-loose max-w-xl mx-auto uppercase font-extralight">
+                  <p className="text-white/40 text-[12px] sm:text-[13px] tracking-[0.14em] sm:tracking-[0.3em] leading-relaxed sm:leading-loose max-w-xl mx-auto uppercase font-extralight">
                     System status: <span className="text-orange-500/60">Ready for transmission</span>. <br />
                     Select preferred encryption protocol to establish connection.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                   {[
                     { label: "Mail", icon: Mail, href: "mailto:your-email@example.com", subtext: "direct_uplink" },
                     { label: "GitHub", icon: Github, href: "https://github.com/TobiasArg", subtext: "core_repository" },
@@ -800,13 +798,13 @@ export default function App() {
                       aria-label={`Connect via ${item.label}`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group/btn relative p-8 border border-white/5 bg-white/[0.01] hover:border-orange-500/40 hover:bg-orange-500/[0.03] transition-all duration-500 flex flex-col items-center justify-center space-y-4"
+                      className="group/btn relative p-5 sm:p-8 border border-white/5 bg-white/[0.01] hover:border-orange-500/40 hover:bg-orange-500/[0.03] transition-all duration-500 flex flex-col items-center justify-center space-y-3 sm:space-y-4"
                     >
-                      <div className="p-4 bg-white/5 border border-white/5 rounded-none group-hover/btn:border-orange-500/20 group-hover/btn:bg-orange-500/10 transition-all duration-500">
+                      <div className="p-3 sm:p-4 bg-white/5 border border-white/5 rounded-none group-hover/btn:border-orange-500/20 group-hover/btn:bg-orange-500/10 transition-all duration-500">
                         <item.icon className="w-6 h-6 text-white/40 group-hover/btn:text-orange-500 transition-colors" />
                       </div>
                       <div className="text-center space-y-1">
-                        <span className="block text-white text-[12px] tracking-[0.4em] uppercase font-light">{item.label}</span>
+                        <span className="block text-white text-[11px] sm:text-[12px] tracking-[0.2em] sm:tracking-[0.4em] uppercase font-light">{item.label}</span>
                         <span className="block text-orange-500/30 text-[8px] font-mono uppercase tracking-widest">{item.subtext}</span>
                       </div>
                       <ExternalLink className="absolute top-4 right-4 w-3 h-3 text-white/10 group-hover/btn:text-orange-500/40 transition-colors" />
@@ -815,7 +813,7 @@ export default function App() {
                 </div>
 
                 <div className="pt-8 border-t border-white/5">
-                  <p className="text-[9px] font-mono text-white/20 tracking-[0.5em] uppercase">
+                  <p className="text-[9px] font-mono text-white/20 tracking-[0.25em] sm:tracking-[0.5em] uppercase">
                     (C) 2026 Argta // Cryptographic handshake active
                   </p>
                 </div>
@@ -830,9 +828,9 @@ export default function App() {
       </main>
 
       <footer className="relative z-10 w-full section-footer">
-        <section className="relative min-h-[20vh] flex flex-col items-center justify-center px-8 py-12 bg-black/50 backdrop-blur-sm border-t border-orange-500/10">
+        <section className="relative min-h-[20vh] flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-12 bg-black/50 backdrop-blur-sm border-t border-orange-500/10">
           <div className="max-w-6xl w-full text-center space-y-4">
-            <div className="text-center text-[10px] tracking-[0.8em] text-orange-500/30 uppercase font-mono">
+            <div className="text-center text-[10px] tracking-[0.35em] sm:tracking-[0.8em] text-orange-500/30 uppercase font-mono">
               End of Line // Sequence Terminated
             </div>
           </div>
