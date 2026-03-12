@@ -102,18 +102,20 @@ const lineVariants = {
 const TechCard = memo(({ label, level, icon: Icon, delay }: { label: string; level: number; icon: any; delay: number }) => (
   <motion.div
     variants={cardVariants}
-    className="group relative p-6 bg-[#0a0a0a] border border-white/10 flex flex-col justify-between h-36 transform-gpu isolate"
+    className="group relative p-5 md:p-6 bg-[#0a0a0a] border border-white/10 flex flex-col justify-between h-40 md:h-44 transform-gpu isolate overflow-hidden"
   >
     <div className="flex items-start justify-between w-full">
-      <div className="flex items-center space-x-3">
-        <div className="p-2.5 bg-white/5 border border-white/5 rounded-lg group-hover:bg-orange-500/10 group-hover:border-orange-500/20 transition-all duration-500">
-          <Icon className="w-5 h-5 text-white/40 group-hover:text-orange-500 transition-colors" />
+      <div className="flex items-center space-x-3 min-w-0 pr-2">
+        <div className="p-3 md:p-3.5 bg-white/5 border border-white/5 rounded-lg group-hover:bg-orange-500/10 group-hover:border-orange-500/20 transition-all duration-500">
+          <Icon className="w-6 h-6 md:w-7 md:h-7 text-white/40 group-hover:text-orange-500 transition-colors" />
         </div>
-        <div className="flex flex-col">
-          <span className="text-[11px] tracking-[0.3em] uppercase text-white font-light group-hover:text-orange-400 transition-colors">{label}</span>
+        <div className="flex flex-col min-w-0">
+          <span className="text-[13px] md:text-[15px] leading-tight tracking-[0.18em] uppercase text-white font-light group-hover:text-orange-400 transition-colors break-words">
+            {label}
+          </span>
         </div>
       </div>
-      <div className="text-[10px] font-mono text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
+      <div className="shrink-0 text-[10px] font-mono text-orange-500/30 group-hover:text-orange-500/60 transition-colors">
         0{Math.floor(delay * 10)}
       </div>
     </div>
